@@ -68,7 +68,6 @@ class MoneyTests: XCTestCase {
     XCTAssert(twelveUSD.amount == usd.amount)
     XCTAssert(twelveUSD.currency == usd.currency)
   }
-  
   func testAddUSDtoUSD() {
     let total = tenUSD.add(tenUSD)
     XCTAssert(total.amount == 20)
@@ -80,6 +79,27 @@ class MoneyTests: XCTestCase {
     XCTAssert(total.amount == 10)
     XCTAssert(total.currency == "GBP")
   }
+
+// Additional test cases
+  func testSubtractBySky(){
+      let sky = tenUSD.subtract(fiveGBP)
+      XCTAssert(sky.amount == 0)
+      XCTAssert(sky.currency == "GBP")
+  }
+    
+  func testNonexistentCurrency(){
+      let sky = tenUSD.convert("sky")
+      XCTAssert(sky.currency == "Cannot convert to this currency")
+      XCTAssert(sky.amount == -1)
+  }
+    
+  func testCANToEUR() {
+      let sky = fifteenCAN.convert("EUR")
+      XCTAssert(sky.currency == "EUR")
+      XCTAssert(sky.amount == 18)
+  }
+    
+
 
     static var allTests = [
         ("testCanICreateMoney", testCanICreateMoney),
@@ -96,6 +116,9 @@ class MoneyTests: XCTestCase {
         
         ("testAddUSDtoUSD", testAddUSDtoUSD),
         ("testAddUSDtoGBP", testAddUSDtoGBP),
+        ("testSubtractBySky", testSubtractBySky),
+        ("testNonexistentCurrency", testNonexistentCurrency),
+        ("testCANToEUR", testCANToEUR)
     ]
 }
 

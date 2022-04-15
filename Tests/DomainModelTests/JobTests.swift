@@ -43,5 +43,6 @@ class JobTests: XCTestCase {
         ("testCreateHourlyJob", testCreateHourlyJob),
         ("testSalariedRaise", testSalariedRaise),
         ("testHourlyRaise", testHourlyRaise),
-    ]
+ 
+     ]
 }
